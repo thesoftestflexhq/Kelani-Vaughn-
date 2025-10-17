@@ -1,11 +1,18 @@
-# Kelani Vaughn API
-
-FastAPI + OpenAI tool-calling chat service for the Kélani Vaughn “The Softest Flex” brand.
-
-## Run locally
-
-```bash
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env   # add your real OPENAI_API_KEY
-python -m src.main     # http://localhost:8000/docs
+.
+├── src/
+│   ├── main.py              # entry point (uvicorn runner)
+│   ├── server.py            # FastAPI app + endpoints
+│   ├── llm.py               # OpenAI client + tool-calling loop
+│   ├── tools.py             # tool definitions + executors
+│   ├── memory.py            # SQLiteMemory (per-session)
+│   ├── schemas.py           # Pydantic models
+│   ├── prompt.py            # KELANI_VAUGHN_SYSTEM_PROMPT
+│   └── config.py            # environment settings loader
+├── requirements.txt
+├── .env.example             # copy to .env and fill in OPENAI_API_KEY
+├── Dockerfile
+├── fly.toml                 # (optional) Fly.io deploy config
+├── render.yaml              # (optional) Render deploy blueprint
+├── .dockerignore
+└── web/
+    └── index.html           # (optional) tiny browser chat UI
